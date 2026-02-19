@@ -13,8 +13,7 @@ def main():
     parser.add_argument("--input-list", default="./input.list", help="Text file with input ROOT files")
     parser.add_argument("--output-dir", default="./results", help="Directory for output ROOT files")
     parser.add_argument("--njobs", type=int, default=1, help="Number of jobs to split into")
-    parser.add_argument("--job-args", required=True, help="Args: 'Input arguments'")
-
+    parser.add_argument("--job-args", default="", help="Optional extra args")
     args = parser.parse_args()
 
     # 1. Read and validate input list
@@ -74,6 +73,8 @@ def main():
 
         # Map the columns from our .items file to Condor variables
         f.write(f"Arguments      = $(InFile) $(OutFile) {args.job_args}\n")
+        extra = f" {args.job_args}" if args.job_args else ""
+        f.write(f"Arguments = $(InFile) $(OutFile){extra}\n")
         f.write(f"Output         = {job_folder}/$(Tag).out\n")
         f.write(f"Error          = {job_folder}/$(Tag).err\n")
         f.write(f"Log            = {job_folder}/$(Tag).log\n\n")
