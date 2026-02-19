@@ -72,7 +72,6 @@ def main():
         f.write("notification   = Never\n\n")
 
         # Map the columns from our .items file to Condor variables
-        f.write(f"Arguments      = $(InFile) $(OutFile) {args.job_args}\n")
         extra = f" {args.job_args}" if args.job_args else ""
         f.write(f"Arguments = $(InFile) $(OutFile){extra}\n")
         f.write(f"Output         = {job_folder}/$(Tag).out\n")
