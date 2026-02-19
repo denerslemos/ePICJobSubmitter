@@ -1,4 +1,4 @@
-<img src=""  width="20%" height="20%">
+<img src="[https://github.com/denerslemos/](https://github.com/denerslemos/ePICJobSubmitter/blob/main/epic.png)"  width="20%" height="20%">
 
 # ePIC Job Submitter
 
