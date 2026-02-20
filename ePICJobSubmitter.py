@@ -29,7 +29,7 @@ def main():
 
     # 2. Prepare Directories
     os.makedirs(args.output_dir, exist_ok=True)
-    job_folder = os.path.join(args.output_dir, "job")
+    job_folder = os.path.join(args.output_dir, f"job_{args.tag}")
     os.makedirs(job_folder, exist_ok=True)
 
     master_condor_file = os.path.join(job_folder, f"submit_{args.tag}.sub")
